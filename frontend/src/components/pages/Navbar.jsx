@@ -33,9 +33,9 @@ const Navbar = () => {
                 />
               </svg>
             </div>
-            <h2 className="text-lg font-bold tracking-tight text-[#111418]">
+            <Link to="/" className="text-lg font-bold tracking-tight text-[#111418]">
               Bookland
-            </h2>
+            </Link>
           </div>
 
           {/* Always visible icons */}

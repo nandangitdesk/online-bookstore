@@ -1,5 +1,6 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React from 'react';
+import { motion } from 'framer-motion';
+import MetaData from '../MetaData';
 
 const books = [
   { id: 1, image: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1575620071l/51213455.jpg', size: 'w-24 h-36' },
@@ -11,26 +12,39 @@ const books = [
   { id: 7, image: 'https://media.dubraybooks.ie/m/609b4ae3be197b53/original/9781503902374_5637692639.jpg', size: 'w-32 h-44' },
   { id: 8, image: 'https://upload.wikimedia.org/wikipedia/commons/e/eb/%22Kalyani%22_by_Vijay_Kumar_Singh_Book_Cover.png', size: 'w-28 h-40' },
   { id: 9, image: 'https://live.staticflickr.com/5078/14245377679_5513be0594_b.jpg', size: 'w-24 h-36' },
-]
-
-
+];
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center overflow-hidden p-8">
-            <h1 className="text-black  text-4xl md:text-7xl leading-tight font-serif w-11/12 md:w-2/3 mb-6 text-center">
+      <MetaData title="BookLand | Home"  />
+      
+      {/* Animated Title */}
+      <motion.h1
+        className="text-black text-4xl md:text-7xl leading-tight font-serif w-[95%] md:w-2/3 mb-6 text-center"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: 'easeInOut' }}
+      >
         Unleash Your Imagination with Every Page
-      </h1>
-      <p className="text-gray-600  text-lg md:text-xl mb-10 text-center">
+      </motion.h1>
+      
+      {/* Animated Subheading */}
+      <motion.p
+        className="text-gray-600 text-lg md:text-xl  mb-10 text-center"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1.2, ease: 'easeInOut', delay: 0.5 }}
+      >
         Discover, Explore, and Buy Books That Inspire You.
-      </p>
+      </motion.p>
+      
       <button className="mb-8 py-4 px-6 md:py-3 bg-black text-white rounded-full hover:bg-zinc-900 hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out text-sm md:text-base">
-  Start Reading o_o
-</button>
-
-
-      <div className="relative md:w-full md:max-w-5xl md:mx-auto ">
-        <div className="flex  justify-center items-center gap-3">
+        Start Reading o_o
+      </button>
+      
+      <div className="relative md:w-full md:max-w-5xl md:mx-auto mb-24 md:mb-5">
+        <div className="flex justify-center items-center gap-3">
           {books.map((book, index) => (
             <motion.div
               key={book.id}
@@ -43,18 +57,18 @@ export default function Home() {
               transition={{
                 duration: 4,
                 repeat: Infinity,
-                ease: "easeInOut",
+                ease: 'easeInOut',
                 delay: index * 0.2,
               }}
               style={{
-                transformOrigin: "bottom",
-                transformStyle: "preserve-3d",
+                transformOrigin: 'bottom',
+                transformStyle: 'preserve-3d',
                 transform: `rotateY(${index * 5}deg)`,
               }}
             >
               <img
                 src={book.image}
-                alt={book.title}
+                alt={`Book ${index + 1}`}
                 className="w-full h-full object-cover"
               />
             </motion.div>
@@ -62,6 +76,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-
